@@ -3,8 +3,8 @@
 <% @recipes.each do |recipe| %>
   <div class="row">
     <div class="col-md-2">
-      <section class="center">
-        
+      <section class="center chef_info">
+          <%= gravatar_for(recipe.chef, size: 120) %>
       </section>
     </div>
     <div class="col-md-8 well">
