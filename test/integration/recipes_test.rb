@@ -32,4 +32,12 @@ class RecipesTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", recipe_path(@recipe), text: @recipe.name
     assert_select "a[href=?]", recipe_path(@recipe2), text: @recipe2.name
   end
+
+  test "create new valid recipe" do
+    get new_recipe_path
+  end
+
+  test "reject invalid submission" do
+    get new_recipe_path
+  end
 end
