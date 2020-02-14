@@ -1,5 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.listing {
+    list-style: none;
+    padding-left: 0;
+}
+
 .navbar-default-bg {
     background: #545151;
     margin-bottom: 0;
@@ -53,4 +58,10 @@
     a {
         color: #fff;
     }
+}
+
+.chef-title {
+    color: #545151;
+    font-weight: bold;
+    font-size: 1.25em;
 }
