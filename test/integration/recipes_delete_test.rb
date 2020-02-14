@@ -19,4 +19,6 @@ class RecipesDeleteTest < ActionDispatch::IntegrationTest
     assert_redirected_to recipes_path
     assert_not flash.empty?
   end
+
+  
 end
