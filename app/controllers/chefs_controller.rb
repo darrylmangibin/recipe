@@ -1,6 +1,7 @@
 class ChefsController < ApplicationController
 
     before_action :set_chef, only: [:show, :edit, :update, :destroy]
+    before_action :require_same_user, only: [:edit, :update, :destroy]
 
     def index
         @chefs = Chef.paginate(
@@ -60,4 +61,10 @@ class ChefsController < ApplicationController
             @chef = Chef.find(params[:id])
         end
 
+        def require_same_user
+            if current_chef != @chef
+                flash[:danger] = "You can only edit and delete your own account"
+                redirect_to chefs_path
+            end
+        end
 end

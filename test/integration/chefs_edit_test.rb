@@ -9,20 +9,20 @@ class ChefsEditTest < ActionDispatch::IntegrationTest
   end
 
   test "reject an invalid edit" do
+    sign_in_as(@chef, "password")
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
-    patch chef_path(@chef), params: { chef: { name: " ", 
-                              email: "mangibin1@example.com" } }
+    patch chef_path(@chef), params: { chef: { name: " ", email: "mangibin1@example.com" } }
     assert_template 'chefs/edit'
     assert_select 'h2.panel-title'
     assert_select 'div.panel-body'
   end
   
   test "accept valid signup" do
+    sign_in_as(@chef, "password")
     get edit_chef_path(@chef)
     assert_template 'chefs/edit'
-    patch chef_path(@chef), params: { chef: { name: "mangibin11", 
-                                email: "mangibin11@example.com" } }
+    patch chef_path(@chef), params: { chef: { name: "mangibin11", email: "mangibin11@example.com" } }
     assert_redirected_to @chef
     assert_not flash.empty?
     @chef.reload
